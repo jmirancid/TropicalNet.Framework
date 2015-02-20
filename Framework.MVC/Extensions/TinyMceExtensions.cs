@@ -61,7 +61,7 @@ namespace Framework.MVC.Extensions
             (this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> options)
             where TModel : class
         {
-            return TinyMce(htmlHelper, expression.GetNameFor(), expression.GetValueFrom(htmlHelper.ViewData.Model).ToString(), options);
+            return TinyMce(htmlHelper, HtmlHelper.GenerateIdFromName(expression.GetNameFor()), expression.GetValueFrom(htmlHelper.ViewData.Model).ToString(), options);
         }
     }
 }
