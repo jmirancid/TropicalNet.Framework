@@ -135,6 +135,30 @@ namespace Framework.Repositories.Definitions
 			}
 		}
 
+        public virtual IQueryable<TEntity> Filter(int skip, int take)
+        {
+            try
+            {
+                return Context.CreateObjectSet<TEntity>().Skip(skip).Take(take);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public virtual IQueryable<TEntity> FilterBy(int skip, int take, System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            try
+            {
+                return Context.CreateObjectSet<TEntity>().Where(predicate).Skip(skip).Take(take);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 		public virtual int Count()
 		{
 			try
