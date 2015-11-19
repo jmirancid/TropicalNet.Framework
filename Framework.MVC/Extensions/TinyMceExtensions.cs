@@ -106,6 +106,58 @@ namespace Framework.MVC.Extensions
                 });
             }
         }
+
+        public static IDictionary<string, object> Lite
+        {
+            get
+            {
+                return new RouteValueDictionary(new
+                {
+                    menubar = false,
+                    language = "en",
+                    mode = "specific_textareas",
+                    editor_selector = "mceEditor",
+                    width = "550px",
+                    theme = "modern",
+                    plugins = new string[]
+                        {
+                            "advlist autolink lists link image charmap print preview anchor",
+                            "searchreplace visualblocks code fullscreen",
+                            "insertdatetime media table contextmenu paste",
+                            "textcolor colorpicker "
+                        },
+                    force_p_newlines = false,
+                    forced_root_block = false,
+                    toolbar = "insertfile undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | table | bullist numlist outdent indent | link image"
+                });
+            }
+        }
+
+        public static IDictionary<string, object> Basic
+        {
+            get
+            {
+                return new RouteValueDictionary(new
+                {
+                    menubar = false,
+                    language = "en",
+                    mode = "specific_textareas",
+                    editor_selector = "mceEditor",
+                    width = "550px",
+                    theme = "modern",
+                    plugins = new string[]
+                        {
+                            "advlist autolink lists link image charmap print preview anchor",
+                            "searchreplace visualblocks code fullscreen",
+                            "insertdatetime media table contextmenu paste",
+                            "textcolor colorpicker "
+                        },
+                    force_p_newlines = false,
+                    forced_root_block = false,
+                    toolbar = "insertfile undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+                });
+            }
+        }
     }
 
 }
