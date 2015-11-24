@@ -24,7 +24,7 @@ namespace Framework.MVC.Controllers
             return Json(new { }, JsonRequestBehavior.AllowGet);
         }
 
-        public virtual ViewResult Details(int id)
+        public virtual ActionResult Details(int id)
         {
             TEntity entity = this.Business.Value.Get(id);
             DetailsGetPrerender(entity);

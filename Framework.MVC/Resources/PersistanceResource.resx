@@ -126,6 +126,9 @@
   <data name="Clear" xml:space="preserve">
     <value>Clear All</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create New</value>
   </data>
