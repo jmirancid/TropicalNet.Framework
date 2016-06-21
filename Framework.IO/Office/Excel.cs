@@ -60,7 +60,7 @@ namespace Framework.IO.Office
                 this._workbook.AddWorksheet(typeof(T).Name);
 
             var props =
-                GetImportableProperties(typeof(T));
+                GetExportableProperties(typeof(T));
 
             var table =
                 new DataTable(typeof(T).Name);
@@ -89,7 +89,7 @@ namespace Framework.IO.Office
             where T : class, new()
         {
             var props =
-                GetExportableProperties(typeof(T));
+                GetImportableProperties(typeof(T));
 
             var fields =
                 worksheet.Table(typeof(T).Name).Fields;
