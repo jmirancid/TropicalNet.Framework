@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
-using System.Web.Script.Serialization;
 using Framework.Common.Extensions;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Framework.MVC.Extensions
 {
@@ -33,7 +31,7 @@ namespace Framework.MVC.Extensions
                 htmlHelper.TextArea(name, value, new { @id = name });
 
             var sync =
-                new { setup = new JRaw("function (editor) { editor.on('change', function () { editor.save(); }) }") } ;
+                new { setup = new JRaw("function (editor) { editor.on('change', function () { editor.save(); }) }") };
 
             var merged =
                 JObject.FromObject(options);
