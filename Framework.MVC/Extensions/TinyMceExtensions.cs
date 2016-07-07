@@ -7,6 +7,8 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
 using Framework.Common.Extensions;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Framework.MVC.Extensions
 {
@@ -30,8 +32,16 @@ namespace Framework.MVC.Extensions
             var textArea =
                 htmlHelper.TextArea(name, value, new { @id = name });
 
+            var sync =
+                new { setup = new JRaw("function (editor) { editor.on('change', function () { editor.save(); }) }") } ;
+
+            var merged =
+                JObject.FromObject(options);
+
+            merged.Merge(JObject.FromObject(sync));
+
             var settings =
-                (options == null) ? string.Empty : (new JavaScriptSerializer()).Serialize(options.ToDictionary(o => o.Key.ToString(), o => o.Value));
+                (options == null) ? string.Empty : JsonConvert.SerializeObject(merged);
 
             var script = new TagBuilder("script");
             script.Attributes["type"] = "text/javascript";
@@ -63,7 +73,7 @@ namespace Framework.MVC.Extensions
             where TModel : class
         {
             var value =
-                (htmlHelper.ViewData.Model == null) ? string.Empty : expression.GetValueFrom(htmlHelper.ViewData.Model).ToString();
+                (htmlHelper.ViewData.Model == null) ? string.Empty : expression.GetValueFrom(htmlHelper.ViewData.Model) as string;
 
             return TinyMce(htmlHelper, HtmlHelper.GenerateIdFromName(expression.GetNameFor()), value, options);
         }
