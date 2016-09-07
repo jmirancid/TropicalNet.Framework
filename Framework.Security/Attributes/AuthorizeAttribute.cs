@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Framework.MVC.Attributes
+namespace Framework.Security.Attributes
 {
     public class AuthorizeAttribute :
             System.Web.Mvc.AuthorizeAttribute

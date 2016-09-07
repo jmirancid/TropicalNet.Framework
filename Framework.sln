@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Cache", "Framewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.IO", "Framework.IO\Framework.IO.csproj", "{494E3C6C-0992-4370-804A-97BCACB03C05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Security", "Framework.Security\Framework.Security.csproj", "{D95F89F4-FCD8-4BBD-8C30-8A518A815952}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{494E3C6C-0992-4370-804A-97BCACB03C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{494E3C6C-0992-4370-804A-97BCACB03C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{494E3C6C-0992-4370-804A-97BCACB03C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D95F89F4-FCD8-4BBD-8C30-8A518A815952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95F89F4-FCD8-4BBD-8C30-8A518A815952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95F89F4-FCD8-4BBD-8C30-8A518A815952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95F89F4-FCD8-4BBD-8C30-8A518A815952}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{E0371FF6-0E27-490C-A8A9-A6D55716F6D3} = {6A237257-6918-431C-B041-A0802531CC19}
 		{78450449-BF0A-4ED3-96FE-622DF252AD27} = {6A237257-6918-431C-B041-A0802531CC19}
 		{494E3C6C-0992-4370-804A-97BCACB03C05} = {6A237257-6918-431C-B041-A0802531CC19}
+		{D95F89F4-FCD8-4BBD-8C30-8A518A815952} = {6A237257-6918-431C-B041-A0802531CC19}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
