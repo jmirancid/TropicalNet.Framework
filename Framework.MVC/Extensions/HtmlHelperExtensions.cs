@@ -9,6 +9,42 @@ namespace Framework.MVC.Extensions
 {
     public static class HtmlHelperExtensions
     {
+        public static MvcHtmlString IdFor<TModel, TProperty>(
+            this HtmlHelper<IEnumerable<TModel>> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return Id(htmlHelper, ExpressionHelper.GetExpressionText(expression));
+        }
+
+        public static MvcHtmlString IdFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return Id(htmlHelper, ExpressionHelper.GetExpressionText(expression));
+        }
+
+        public static MvcHtmlString Id(
+            this HtmlHelper htmlHelper, string name)
+        {
+            return MvcHtmlString.Create(htmlHelper.AttributeEncode(htmlHelper.ViewData.TemplateInfo.GetFullHtmlFieldId(name)));
+        }
+
+        public static MvcHtmlString NameFor<TModel, TProperty>(
+            this HtmlHelper<IEnumerable<TModel>> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return Name(htmlHelper, ExpressionHelper.GetExpressionText(expression));
+        }
+
+        public static MvcHtmlString NameFor<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return Name(htmlHelper, ExpressionHelper.GetExpressionText(expression));
+        }
+
+        public static MvcHtmlString Name(
+            this HtmlHelper htmlHelper, string name)
+        {
+            return MvcHtmlString.Create(htmlHelper.AttributeEncode(htmlHelper.ViewData.TemplateInfo.GetFullHtmlFieldName(name)));
+        }
+
         public static MvcHtmlString DisplayNameFor<TModel, TProperty>(
             this HtmlHelper<IEnumerable<TModel>> htmlHelper, Expression<Func<TModel, TProperty>> expression)
         {
@@ -21,7 +57,8 @@ namespace Framework.MVC.Extensions
             return DisplayNameFor(expression);
         }
 
-        private static MvcHtmlString DisplayNameFor<TModel, TProperty>(Expression<Func<TModel, TProperty>> expression)
+        private static MvcHtmlString DisplayNameFor<TModel, TProperty>(
+            Expression<Func<TModel, TProperty>> expression)
         {
             var metadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>(expression, new ViewDataDictionary<TModel>());
             var htmlFieldName = ExpressionHelper.GetExpressionText(expression);

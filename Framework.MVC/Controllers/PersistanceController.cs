@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Framework.Interfaces.Business;
 using Framework.MVC.Filters;
+using System.Net;
 
 namespace Framework.MVC.Controllers
 {
@@ -165,6 +166,35 @@ namespace Framework.MVC.Controllers
             CreateGetPrerender(entity);
 
             return View("Create", entity);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Toggle(int id, string propertyName)
+        {
+            try
+            {
+                var propertyInfo =
+                    typeof(TEntity).GetProperty(propertyName, typeof(bool));
+
+                if (propertyInfo == null)
+                    throw new NullReferenceException();
+                
+                var entity =
+                    this.Business.Value.Get(id);
+
+                var value =
+                    Convert.ToBoolean(propertyInfo.GetValue(entity, null));
+
+                propertyInfo.SetValue(entity, !value, null);
+
+                this.Business.Value.Update(entity);
+
+                return new HttpStatusCodeResult((int)HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
